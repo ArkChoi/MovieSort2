@@ -17,6 +17,7 @@ public:
 	~Movie();
 
 	std::string GetMoveName();
+	int GetAdmissions();
 
 	void Print();
 

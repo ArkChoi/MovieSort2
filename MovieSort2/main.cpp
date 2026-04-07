@@ -9,13 +9,14 @@ std::vector<Movie>* FileOpen(std::string InFileName, std::vector<Movie>* InMovie
 int CutString(std::string InLine, std::string* ResultStr, std::string* TempStr);
 
 bool SizeStrName(Movie InMovie1, Movie InMovie2);
+bool SizeIntAdm(Movie InMovie1, Movie InMovie2);
 
 int main()
 {
 	std::vector<Movie> Movies;
 	FileOpen("movie.txt", &Movies);
 
-	std::sort(Movies.begin(), Movies.end(), SizeStrName);
+	std::sort(Movies.begin(), Movies.end(), SizeIntAdm);
 
 	for (int i = 0; i < Movies.size(); i++)
 	{
@@ -119,6 +120,15 @@ int CutString(std::string InLine, std::string* ResultStr, std::string* TempStr)
 bool SizeStrName(Movie InMovie1, Movie InMovie2)
 {
 	if (InMovie1.GetMoveName() < InMovie2.GetMoveName())
+	{
+		return true;
+	}
+	return false;
+}
+
+bool SizeIntAdm(Movie InMovie1, Movie InMovie2)
+{
+	if (InMovie1.GetAdmissions() > InMovie2.GetAdmissions())
 	{
 		return true;
 	}

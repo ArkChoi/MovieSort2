@@ -35,3 +35,8 @@ std::string Movie::GetMoveName()
 	return MoveName;
 }
 
+int Movie::GetAdmissions()
+{
+	return Admissions;
+}
+
