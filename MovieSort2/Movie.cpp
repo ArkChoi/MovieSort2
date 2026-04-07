@@ -20,8 +20,8 @@ Movie::Movie(std::string InMoveName, std::string InMovieDirector, int InYear, in
 
 void Movie::Print()
 {
-	std::cout << MoveName + " | ";
-	std::cout << Admissions;
+	std::cout << MoveName;// +" | ";
+	//std::cout << Admissions;
 	std::cout << std::endl;
 }
 

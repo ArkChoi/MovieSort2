@@ -10,13 +10,14 @@ int CutString(std::string InLine, std::string* ResultStr, std::string* TempStr);
 
 bool SizeStrName(Movie InMovie1, Movie InMovie2);
 bool SizeIntAdm(Movie InMovie1, Movie InMovie2);
+bool SizeLenName(Movie InMovie1, Movie InMovie2);
 
 int main()
 {
 	std::vector<Movie> Movies;
 	FileOpen("movie.txt", &Movies);
 
-	std::sort(Movies.begin(), Movies.end(), SizeIntAdm);
+	std::sort(Movies.begin(), Movies.end(), SizeLenName);
 
 	for (int i = 0; i < Movies.size(); i++)
 	{
@@ -126,9 +127,20 @@ bool SizeStrName(Movie InMovie1, Movie InMovie2)
 	return false;
 }
 
+// b) 관람객 수 기준으로 내림차순 정렬하여, 영화제목과 관람객 수 출력하기 sort 조건식
 bool SizeIntAdm(Movie InMovie1, Movie InMovie2)
 {
 	if (InMovie1.GetAdmissions() > InMovie2.GetAdmissions())
+	{
+		return true;
+	}
+	return false;
+}
+
+//c) 영화제목의 길이를 기준으로 오름차순 정렬하여, 영화제목 출력하기 sort 조건식
+bool SizeLenName(Movie InMovie1, Movie InMovie2)
+{
+	if (InMovie1.GetMoveName().length() < InMovie2.GetMoveName().length())
 	{
 		return true;
 	}
