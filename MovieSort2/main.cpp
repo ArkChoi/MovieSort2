@@ -11,13 +11,14 @@ int CutString(std::string InLine, std::string* ResultStr, std::string* TempStr);
 bool SizeStrName(Movie InMovie1, Movie InMovie2);
 bool SizeIntAdm(Movie InMovie1, Movie InMovie2);
 bool SizeLenName(Movie InMovie1, Movie InMovie2);
+bool MovieSort(Movie InMovie1, Movie InMovie2);
 
 int main()
 {
 	std::vector<Movie> Movies;
 	FileOpen("movie.txt", &Movies);
 
-	std::sort(Movies.begin(), Movies.end(), SizeLenName);
+	std::sort(Movies.begin(), Movies.end(), MovieSort);
 
 	for (int i = 0; i < Movies.size(); i++)
 	{
@@ -144,6 +145,21 @@ bool SizeLenName(Movie InMovie1, Movie InMovie2)
 	{
 		return true;
 	}
+	return false;
+}
+
+//d) 개봉 연도 기준 내림차순, 만약 같으면 관람객 수 내림차순 정렬하여, 개봉 연도/관람객수/영화제목 출력하기 sort 조건식
+bool MovieSort(Movie InMovie1, Movie InMovie2)
+{
+	if (InMovie1.GetYear() > InMovie2.GetYear())
+	{
+		return true;
+	}
+	else if (InMovie1.GetYear() == InMovie2.GetYear())
+	{
+		return SizeIntAdm(InMovie1, InMovie2);
+	}
+
 	return false;
 }
 

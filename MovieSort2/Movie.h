@@ -18,6 +18,7 @@ public:
 
 	std::string GetMoveName();
 	int GetAdmissions();
+	int GetYear();
 
 	void Print();
 
